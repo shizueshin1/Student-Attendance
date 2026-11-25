@@ -60,7 +60,7 @@ CREATE TABLE attendance_records (
 
 -- Seed Users (admin and teachers only — no pre-loaded students)
 INSERT INTO users (id, username, password_hash, full_name, role) VALUES
-  (1, 'admin',          'admin123', 'Catherine Peñaverde', 'admin'),
+  (1, 'admin',          'admin123', 'Admin', 'admin'),
   (2, 'teacher.santos', 'teach123', 'Prof. Marco Santos',  'teacher'),
   (3, 'teacher.reyes',  'teach123', 'Prof. Elena Reyes',   'teacher');
 

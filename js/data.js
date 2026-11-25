@@ -25,7 +25,7 @@ async function apiRequest(action, method = "GET", body = null, userRole = "") {
 
 const SEED_DATA = {
   users: [
-    { id: 1, username: "admin", password: "admin123", name: "Catherine Peñaverde", role: "admin" },
+    { id: 1, username: "admin", password: "admin123", name: "Admin", role: "admin" },
     { id: 2, username: "teacher.santos", password: "teach123", name: "Prof. Marco Santos", role: "teacher" },
     { id: 3, username: "teacher.reyes", password: "teach123", name: "Prof. Elena Reyes", role: "teacher" }
   ],
