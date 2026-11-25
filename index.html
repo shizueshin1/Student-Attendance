@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Attendance Monitoring System — Pateros Technological College</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Auth / Login View -->
+  <div id="auth-view" class="auth-shell">
+    <div class="auth-panel">
+      <div class="auth-showcase">
+        <div class="showcase-pattern" aria-hidden="true"></div>
+        <div class="showcase-top">
+          <div class="auth-brand">
+            <div class="brand-badge" aria-hidden="true">
+              <span class="monogram">PTC</span>
+            </div>
+            <div>
+              <span class="brand-kicker">Pateros Technological College</span>
+              <h1>Student Attendance Monitoring System</h1>
+            </div>
+          </div>
+
+          <p class="showcase-lead">
+            Centralized, real-time attendance tracking for students, faculty, and school administrators.
+          </p>
+
+          <div class="showcase-features">
+            <div class="showcase-item">
+              <span class="showcase-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+              </span>
+              <div>
+                <strong>Real-time attendance</strong>
+                <span>Record and update an entire class in one session</span>
+              </div>
+            </div>
+            <div class="showcase-item">
+              <span class="showcase-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+              </span>
+              <div>
+                <strong>Automatic absence alerts</strong>
+                <span>Instantly flags students with 3 or more absences</span>
+              </div>
+            </div>
+            <div class="showcase-item">
+              <span class="showcase-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+              </span>
+              <div>
+                <strong>One-click reports</strong>
+                <span>Export CSV summaries and print-ready reports</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-footer">
+          Academic Year 2026&ndash;2027 &bull; Pateros Technological College
+        </div>
+      </div>
+
+      <div class="auth-card">
+        <div class="auth-card-head">
+          <h2 id="auth-heading">Sign in to your account</h2>
+          <p id="auth-subheading" class="auth-subtitle">Select your role and enter your credentials.</p>
+        </div>
+
+        <div id="signin-section">
+          <div class="role-tabs" role="tablist" aria-label="Select login role">
+            <button type="button" class="role-tab active" data-role-tab="admin" role="tab" aria-selected="true">Admin</button>
+            <button type="button" class="role-tab" data-role-tab="teacher" role="tab" aria-selected="false">Teacher</button>
+            <button type="button" class="role-tab" data-role-tab="student" role="tab" aria-selected="false">Student</button>
+          </div>
+
+          <form id="login-form" class="auth-form" autocomplete="off">
+            <div class="form-group">
+              <label for="login-username">Username / ID</label>
+              <input type="text" id="login-username" placeholder="e.g. admin" required />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <div class="password-wrap">
+                <input type="password" id="login-password" placeholder="Enter password" required />
+                <button type="button" id="toggle-password-btn" class="password-toggle" aria-label="Show password">
+                  <svg id="eye-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div id="login-error" class="form-error hidden" role="alert"></div>
+            <button type="submit" id="login-submit-btn" class="btn btn-primary btn-full btn-lg">
+              <span class="btn-label">Sign in</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </form>
+
+          <p class="auth-switch hidden">
+            Don't have an account?
+            <button type="button" id="show-register-btn" class="link-btn">Create account</button>
+          </p>
+
+        </div>
+
+        <!-- Create Account Section -->
+        <div id="register-section" class="hidden">
+          <form id="register-form" class="auth-form" autocomplete="off">
+            <div class="form-group">
+              <label for="reg-role">Account Role</label>
+              <select id="reg-role">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+              </select>
+            </div>
+
+            <!-- Username — always visible, user-chosen login name -->
+            <div class="form-group">
+              <label for="reg-username">Username</label>
+              <input type="text" id="reg-username" placeholder="Choose a login username" required />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-fullname">Full Name</label>
+              <input type="text" id="reg-fullname" placeholder="e.g. Juan Dela Cruz" required />
+            </div>
+
+            <!-- Student-only fields -->
+            <div id="reg-student-fields">
+              <!-- Student ID — manual input -->
+              <div class="form-group">
+                <label for="reg-student-id">Student ID</label>
+                <input type="text" id="reg-student-id" placeholder="e.g. 2026-0001" required />
+              </div>
+              <div class="form-group">
+                <label for="reg-course">Course</label>
+                <select id="reg-course" required>
+                  <option value="">— Select Course —</option>
+                  <option value="BSOA">BSOA — Bachelor of Science in Office Administration</option>
+                  <option value="BSIT">BSIT — Bachelor of Science in Information Technology</option>
+                  <option value="BSBA">BSBA — Bachelor of Science in Business Administration</option>
+                  <option value="BSHM">BSHM — Bachelor of Science in Hospitality Management</option>
+                  <option value="BSTM">BSTM — Bachelor of Science in Tourism Management</option>
+                  <option value="BSE">BSE — Bachelor of Secondary Education</option>
+                  <option value="BEED">BEED — Bachelor of Elementary Education</option>
+                  <option value="BSCrim">BSCrim — Bachelor of Science in Criminology</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="reg-section">Year &amp; Section</label>
+                <input type="text" id="reg-section" placeholder="e.g. 3A" required />
+              </div>
+              <div class="form-group">
+                <label for="reg-email">PTC Email</label>
+                <input type="email" id="reg-email" placeholder="student@paterostechnologicalcollege.edu.ph" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-password">Password</label>
+              <input type="password" id="reg-password" placeholder="Minimum 4 characters" minlength="4" required />
+            </div>
+            <div id="register-error" class="form-error hidden" role="alert"></div>
+            <button type="submit" id="register-submit-btn" class="btn btn-primary btn-full btn-lg">
+              <span class="btn-label">Create Account</span>
+              <span class="btn-spinner hidden" aria-hidden="true"></span>
+            </button>
+          </form>
+
+          <p class="auth-switch">
+            Already have an account?
+            <button type="button" id="show-signin-btn" class="link-btn">Sign in</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Application Shell -->
+  <div id="app-view" class="app-shell hidden">
+    <div id="sidebar-overlay" class="sidebar-overlay hidden"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+      <div class="sidebar-header">
+        <div class="brand-badge small" aria-hidden="true">
+          <span class="monogram">PTC</span>
+        </div>
+        <div class="sidebar-title">
+          <strong>PTC SAMS</strong>
+          <span>Attendance Portal</span>
+        </div>
+        <button id="collapse-sidebar-btn" class="icon-btn desktop-only" aria-label="Collapse sidebar" title="Collapse sidebar">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <button id="close-sidebar-btn" class="icon-btn mobile-only" aria-label="Close navigation">&times;</button>
+      </div>
+
+      <div class="sidebar-section-label">Menu</div>
+      <nav class="sidebar-nav" id="sidebar-nav" aria-label="Main navigation"></nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar" id="sidebar-avatar">U</div>
+          <div class="sidebar-user-meta">
+            <strong id="sidebar-user-name">User</strong>
+            <span id="sidebar-user-role">Role</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="open-sidebar-btn" class="icon-btn mobile-only" aria-label="Open navigation">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <div>
+            <div class="breadcrumb" id="topbar-breadcrumb">PTC SAMS / Dashboard</div>
+            <h2 id="page-title">Dashboard</h2>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <span id="mode-badge" class="mode-badge">Offline mode</span>
+          <span id="topbar-date" class="topbar-date-pill"></span>
+
+          <button id="theme-toggle-btn" class="icon-pill-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <svg id="theme-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+
+          <div class="dropdown-wrap">
+            <button id="notif-btn" class="icon-pill-btn" aria-label="Notifications" aria-expanded="false">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              </svg>
+              <span id="notif-count" class="notif-dot hidden">0</span>
+            </button>
+            <div id="notif-menu" class="dropdown-menu hidden" role="menu"></div>
+          </div>
+
+          <div class="dropdown-wrap">
+            <button id="avatar-menu-btn" class="user-chip-btn" aria-expanded="false">
+              <div class="user-avatar" id="user-avatar">U</div>
+              <div class="user-meta">
+                <span id="user-display-name" class="user-name">User</span>
+                <span id="user-role-badge" class="role-badge">Role</span>
+              </div>
+            </button>
+            <div id="avatar-menu" class="dropdown-menu hidden" role="menu">
+              <div class="dropdown-header">
+                <strong id="menu-user-name">User</strong>
+                <span id="menu-user-role">Role</span>
+              </div>
+              <button type="button" class="dropdown-item" id="menu-logout-btn">Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Print-only College Header -->
+      <div class="print-only-header">
+        <h1>Pateros Technological College</h1>
+        <p>Student Attendance Monitoring System — Official Attendance Summary Report</p>
+      </div>
+
+      <main id="main-content" class="main-content"></main>
+    </div>
+  </div>
+
+  <!-- Reusable Modal -->
+  <div id="modal-backdrop" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title">Modal</h3>
+        <button id="modal-close-btn" class="icon-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Top-Right Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
